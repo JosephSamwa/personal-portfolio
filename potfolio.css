@@ -100,9 +100,9 @@ span{
     margin-top: 1rem;
     font-size: 3rem;
 text-align:center;
+margin-right:1px;
 }
 .home-content h1{
-    font-size: 4rem;
     font-weight: 500;
     margin-top: 1.5rem;
     line-height: 1;
