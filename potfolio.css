@@ -730,7 +730,7 @@ span{
 }
 .button button{
     height: 60px;
-    width: auto;
+    width: fit-content;
     border-radius: 50px;
 }
 .circle button{
