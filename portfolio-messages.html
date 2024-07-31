@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SamTech-messages</title>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: #333;
+    text-align: center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #007bff;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+    </style>
+    <!-- Your Firebase scripts here -->
+        <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+</head>
+<body>
+    <h1>Messages From Portfolio</h1>
+    <table id="msgTble">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+                <th>SELECTION</th>
+                <th>DATE</th>
+                <th>REPLIED</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="msgs"></tbody>
+    </table>
+
+    <script>
+    const firebaseConfig = {
+
+    apiKey: "AIzaSyAujFKDx_T7ZSEyYGmvbdhkmn8SdKCNXjs",
+
+    authDomain: "hope-kokeno-cbo.firebaseapp.com",
+    databaseURL: "https://hope-kokeno-cbo-default-rtdb.firebaseio.com",
+    projectId: "hope-kokeno-cbo",
+    storageBucket: "hope-kokeno-cbo.appspot.com",
+    messagingSenderId: "508964589142",
+    appId: "1:508964589142:web:33a4d190a497bb5ecab5f7"
+  };
+
+        firebase.initializeApp(firebaseConfig);
+        const firebaseRef = firebase.database().ref("portfolio");
+
+        async function listenForChanges() {
+            try {
+                firebaseRef.on("value", (snapshot) => {
+                    const data = snapshot.val();
+                    const tableBody = document.querySelector("#msgs");
+                    tableBody.innerHTML = ""; // Clear existing rows
+
+                    let rowNum = 1; // Initialize row number
+
+                    for (const key in data) {
+                        const memberData = data[key];
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${rowNum}</td>
+                            <td>${memberData.name}</td>
+                            <td>${memberData.email}</td>
+                            <td>${memberData.phone}</td>
+                            <td>${memberData.selections}</td>
+                            <td>${memberData.date}</td>
+                            <td><input type="checkbox"></td>
+                            <td><button onclick="deleteRow('${key}')" class="delete-button">Delete</button></td>
+                        `;
+                        row.setAttribute("data-id", key); // Set data-id attribute
+                        tableBody.appendChild(row);
+                        rowNum++; // Increment row number
+                    }
+                });
+            } catch (error) {
+                console.error("Error listening for changes:", error);
+            }
+        }
+
+        // Call the listenForChanges function to start listening
+        listenForChanges();
+
+        function deleteRow(key) {
+    try {
+        // Remove the member with the specified key from the database
+        firebaseRef.child(key).remove();
+        console.log(`Member with key ${key} deleted successfully.`);
+    } catch (error) {
+        console.error("Error deleting member:", error);
+    }
+}
+        // Example date formatting function (replace with your actual date formatting logic)
+     /*   function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return `${date.toLocaleString("default", { month: "short" })} ${date.getDate()}, ${date.getFullYear()}`;
+        }
+
+        // Example deleteRow function (replace with your actual implementation)
+        function deleteRow(key) {
+            try {
+                // Remove the member with the specified key from the database
+                firebaseRef.child(key).remove();
+                console.log(`Member with key ${key} deleted successfully.`);
+            } catch (error) {
+                console.error("Error deleting member:", error);
+            }
+        }
+        */
+    </script>
+</body>
+</html>
