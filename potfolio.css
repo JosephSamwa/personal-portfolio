@@ -198,7 +198,7 @@ align-self: center;
 text-align: center;
 }
 .text-animation span{
-    position: relative;
+    position:fixed;
 }
 .text-animation span::before{
     content: "Software Developer";
