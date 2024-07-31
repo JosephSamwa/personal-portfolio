@@ -1,4 +1,4 @@
-* {
+p* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -495,11 +495,18 @@ text-align: center;
     margin-bottom: 5rem;
 }
 .testimonials-box img{
-    width: 15rem;
+position: relative;
+    top: 3rem;
+    width: 32vw;
+    border-radius: 50%;
+    box-shadow: 0 0 25px black;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+   /* width: 15rem;
 height: 15rem;
     border-radius: 50%;
     border: 3px solid greenyellow;
-    box-shadow: 0 0 25px black;
+    box-shadow: 0 0 25px black; */
 }
 .wrapper{
     display: grid;
