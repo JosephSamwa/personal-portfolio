@@ -73,6 +73,7 @@ section{
     padding: 10rem 12% 10rem;
 }
 .home{
+align-content:center;
     display: flex;
     align-items: center;
     justify-content: center;
