@@ -195,6 +195,7 @@ align-self: center;
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
+text-align: center;
 }
 .text-animation span{
     position: relative;
