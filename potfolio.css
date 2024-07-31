@@ -98,10 +98,11 @@ span{
     margin-bottom: 2rem;
     margin-top: 1rem;
     font-size: 3rem;
+text-align:center;
 }
 .home-content h1{
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: 1.5rem;
     line-height: 1;
 text-align: center;
