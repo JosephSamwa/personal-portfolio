@@ -266,9 +266,9 @@ align-self: center;
     }
 }
 .heading{
-    font-size: 8rem;
+    font-size: 6rem;
     text-align: center;
-    margin: 5rem 0;
+    margin: auto;
 }
 .education {
     color: greenyellow;
