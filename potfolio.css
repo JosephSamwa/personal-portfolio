@@ -82,7 +82,7 @@ section{
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    text-align: left;
+    text-align: center;
     justify-content: center;
     margin-top: 3rem;
 }
