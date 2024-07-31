@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Portfolio</title>
+        <meta property="og:image" content="SamTech.jpg">
+        <link rel="stylesheet" href="potfolio.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+    <body>
+        <header class="header">
+            <a href="#home" class="logo">Joseph <span>Samwa</span></a>
+            <i class='bx bx-menu' id="menu-icon"></i>
+            <nav class="navbar">
+                <a href="#home" class="active">Home</a>
+                <a href="#education">Education</a>
+                <a href="#services">Services</a>
+                <a href="#testimonials">Friends</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+        <section class="home" id="home">
+            <div class="home-content">
+                <h1>Hello, I am <span>JosephSamwa</span></h1>
+                <h3 class="text-animation">I am a <span></span></h3>
+              <!--  <p>I am 19 years..,🌹🌹</p> 
+                <p>I am a Kenyan..,</p>-->
+                <p>Am a Software and Website Developer based in Nairobi County</p>
+                <div class="social-icons">
+                    <a href="https://wa.me/message/254113607660"><i class='bx bxl-whatsapp' ></i></a>
+                    <a href="https://t.me/josephsamwa"><i class='bx bxl-telegram' ></i></a>
+                  <!--  <a href="https://www.instagram.com/JosephSamwa2"><i class='bx bxl-instagram-alt' ></i></a>-->
+                    <a href="https://www.facebook.com/profile.php?id=100089103910464"><i class='bx bxl-facebook' ></i></a>
+                </div>
+                <div class="btn-group">
+                    <a href="https://wa.me/254113607660" class="btn-group">WHATSAPP CONTACT</a>
+                </div>
+            </div>
+                <div class="home-img">
+                    <img src="SamTech.jpg" alt="">
+                </div>
+        </section>
+        <section class="education" id="education">
+            <h2 class="heading">EDUCATION</h2>
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022 December</div>
+                        <div class="timeline-content">
+                            <h3>High School</h3>
+                            <p>I sat for my  National Exam (KCSE) at Homa Bay High School</p>
+                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 September</div>
+                        <div class="timeline-content">
+                            <h3>Tertiary Level</h3>
+                            <p>I Joined The Cooperative University of Kenya  to pursue a degree in Computer Science</p>
+                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h3>Tertiary Level</h3>
+                            <p>Still Studing...!!!!</p>
+                        </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h3>Tertiary Level</h3>
+                            <p>Still Studying...!!!!</p>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <section class="services" id="services">
+            <h2 class="heading">SERVICES</h2>
+            <div class="services-container">
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4>FRONTEND DESIGNER</h4>
+                        <p>I designer websites using languages like;</p>
+                    </div>
+                    <div class="lix">
+                        <li>javaScript</li>
+                        <li>react</li>
+                        <li>html</li>
+                        <li>css</li>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4>Backend Developer</h4>
+                        <p>In Backend servers, I use languages like;</p>
+                    </div>
+                    <div class="lix">
+                        <li>python</li>
+                        <li>node.js</li>
+                        <li>css</li>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4>SOFTWARE DEVELOPING</h4>
+                        <p>In software developing i use languages likes</p>
+                    </div>
+                    <div class="lix">
+                        <li>java for backend</li>
+                        <li>xml for frontend</li>
+                    </div>
+                </div>
+                <div class="service-box">
+                    <div class="service-info">
+                        <h4>GRAPHIC DESIGNER</h4>
+                        <p>I do various designing like in;</p>
+                    </div>
+                    <div class="lix">
+                        <li>desktop publishing</li>
+                        <li>graphic designing</li>
+                    </div>
+                </div>
+            </div>
+            <div class="service-box">
+                    <div class="service-info">
+                        <h4>PORTFOLIO DESIGN</h4>
+                    </div>
+            <div class="center">
+                <div class="outer button">
+            <button id="ptfl">PORTFOLIO DESIGNING</button>
+                </div>
+            </div>
+                </div>
+            </div>
+                    <div id="overlay"></div>
+                        <div id="DevForm">
+        <span class="close-btn" id="closeDevForm">X</span>
+        <form name="DevForm" method="POST" data-netlify="true">
+            <label for="Name">Full Name:</label>
+            <input type="text" id="DevName" name="DevName" required>
+            <label for="DevEmail">Email:</label>
+            <input type="email" id="DevEmail" name="DevEmail" required>
+            <label for="DevPhone">Phone:</label>
+            <input type="tel" id="DevPhone" name="DevPhone" required>
+            <label for="title">Title:</label>
+            <select name="AIM" id="skills" required>
+                <option value="">Reason for contacting us</option>
+               <option value="need a portfolio">I need a portfolio</option>
+               <option value="website">I need a website</option>
+               <option value="app">I need  an android app</option>
+               <option value="Want to learn website development">Want to learn website development</option>
+            </select>
+                        <div class="center">
+                <div class="outer button">
+            <button type="submit">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+        </section>
+        <section class="testimonials" id="testimonials">
+            <div class="testimonials-box">
+                <h2 class="heading">BEST PROGRAMERS</h2>
+                <div class="wrapper">
+                    <div class="testimonial-item">
+                        <img src="Josephs.jpg" alt="Samwa">
+                        <h2>Eliud Fidel</h2>
+                        <div class="rating">
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                        </div>
+                        <p>"BEST IN JAVA PROJECTS LIKE SOFTWARE DEVELOPING"</p>
+                        <div class="center">
+                            <div class="outer button">
+                                <a href="https://wa.me/message/254793540008"><button>CONTACT</button></a>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <img src="SHARON.JPG.jpg" alt="Rhino">
+                        <h2>BabyRhino</h2>
+                        <div class="rating">
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                        </div>
+                        <p>"Expert In Python Automotion Projects"</p>
+                        <div class="center">
+                            <div class="outer button">
+                                <a href="https://wa.me/254712659451"><button>CONTACT</button></a>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <img src="TYPE.jpg.jpg" alt="Master">
+                        <h2>MasterG</h2>
+                        <div class="rating">
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                            <i class='bx bxs-star' id="star"></i>
+                        </div>
+                        <p>"GOOD IN C PROGRAMMING"</p>
+                        <div class="center">
+                            <div class="outer button">
+                                <a href="https://wa.me/254742451048"><button>CONTACT</button></a>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact" id="contact">
+            <h2 class="heading">CONTACT <span>ME</span></h2>
+            <div class="center">
+                <div class="outer button">
+                    <a href="https://wa.me/254113607660"><button>WHATSAPP</button></a>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+           <!-- <div class="center">
+                <div class="outer button">
+                    <a href="https://whatsapp.com/channel/0029Va1znml3WHTgJZkt3n3R"><button>WHATSAPP CHANNEL</button></a>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>-->
+            <!--<div class="center">
+                <div class="outer button">
+                    <a href="https://www.tiktok.com/@JosephSamwa254"><button>TIKTOK</button></a>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>-->
+            <div class="center">
+                <div class="outer button">
+                    <a href="https://www.facebook.com/profile.php?id=100089103910464"><button>FACEBOOK</button></a>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="center">
+                <div class="outer button">
+                    <a href="mailto:samtech.websites@gmail.com"><button>EMAIL</button></a>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+          <!--  <div class="center">
+                <div class="outer button">
+                    <a href="https://t.me/JosephSamwa1"><button>TELEGRAM CHANNEL</button></a>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>-->
+        </section>
+        <footer class="footer">
+            <div class="social">
+                <a href="https://wa.me/254113607660"><i class='bx bxl-whatsapp' ></i></a>
+                <a href="https://t.me/josephsamwa"><i class='bx bxl-telegram' ></i></a>
+                <!--<a href="https://www.instagram.com/JosephSamwa2"><i class='bx bxl-instagram-alt' ></i></a>-->
+                <a href="https://www.facebook.com/profile.php?id=100089103910464"><i class='bx bxl-facebook' ></i></a>
+            </div>
+            <ul class="list">
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="#">Testimonials</a>
+                </li>
+            </ul>
+            <p class="copyright">
+                it`s JosephSamwa
+            </p>
+        </footer>
+                <script>
+        const adminBtn = document.getElementById('ptfl');
+        const DevForm = document.getElementById('DevForm');
+        const closeDevForm = document.getElementById('closeDevForm');
+        const overlay = document.getElementById('overlay');
+
+        adminBtn.addEventListener('click', () => {
+            DevForm.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        closeDevForm.addEventListener('click', () => {
+            DevForm.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            DevForm.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    </script>
+        <script src="portfolio.js"></script>
+    </body>
+</html>
