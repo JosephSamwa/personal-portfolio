@@ -77,6 +77,7 @@ section{
     align-items: center;
     justify-content: center;
     gap: 15rem;
+
 }
 .home-content{
     display: flex;
@@ -85,6 +86,7 @@ section{
     text-align: center;
     justify-content: center;
     margin-top: 3rem;
+align-self:center;
 }
 span{
     color: greenyellow;
@@ -126,6 +128,10 @@ span{
     line-height: 1.8;
     max-width: 1000px;
 }
+.social-icons{
+        align-self: center;
+    align-content: center;
+}
 .social-icons a{
     display: inline-flex;
     justify-content: center;
@@ -159,6 +165,10 @@ span{
     font-weight: 600;
     transition: 0.3s ease-in-out;
     cursor: pointer;
+align-self: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
 }
 .btn-group:hover{
     transform: scale(1.05);
