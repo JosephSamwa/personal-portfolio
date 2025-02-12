@@ -1,363 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Portfolio</title>
-        <meta property="og:image" content="potfolio.jpg">
-        <link rel="stylesheet" href="potfolio.css">
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <meta name="google-adsense-account" content="ca-pub-2755555001329274">
-    </head>
-    <body>
-        <header class="header">
-            <a href="#home" class="logo">Joseph <span>Samwa</span></a>
-            <i class='bx bx-menu' id="menu-icon"></i>
-            <nav class="navbar">
-                <a href="#home" class="active">Home</a>
-                <a href="#education">Education</a>
-                <a href="#services">Services</a>
-                <a href="#testimonials">Friends</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </header>
-    <section class="home" id="home">
-            <div class="home-content">
-                <h1 style="text-align:center;">Hello, I'm <span>JosephSamwa</span></h1>
-                <h3 class="text-animation" style="text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;I am a <span></span></h3>
-              <!--  <p>I am 19 years..,🌹🌹</p> 
-                <p>I am a Kenyan..,</p>-->
-                <p>I'm a Software and Website Developer based in Nairobi, Kenya</p>
-                <div class="social-icons">
-                    <a href="https://wa.me/254113607660"><i class='bx bxl-whatsapp' ></i></a>
-                    <a href="https://t.me/josephsamwa"><i class='bx bxl-telegram' ></i></a>
-                  <!--  <a href="https://www.instagram.com/JosephSamwa2"><i class='bx bxl-instagram-alt' ></i></a>-->
-                    <a href="https://www.facebook.com/profile.php?id=100089103910464"><i class='bx bxl-facebook' ></i></a>
-                </div>
-                <div class="btn-group">
-                    <a href="https://wa.me/254113607660" class="btn-group">WHATSAPP CONTACT</a>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Samwa | Full-Stack Developer & Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInFromRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInFromBottom {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .animate-fade-in { animation: fadeIn 1s ease-out; }
+        .animate-slide-in-left { animation: slideInFromLeft 1s ease-out; }
+        .animate-slide-in-right { animation: slideInFromRight 1s ease-out; }
+        .animate-slide-in-bottom { animation: slideInFromBottom 0.5s ease-out; }
+        .animate-scale-in { animation: scaleIn 0.5s ease-out; }
+        .skill-card, .project-card, .service-box {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skill-card:hover, .project-card:hover, .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .floating-button {
+            display: block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .floating-button:hover {
+            transform: scale(1.1);
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        .hidden-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .visible-element {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <nav class="bg-white shadow-md fixed w-full z-10 no-print animate-slide-in-top">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-blue-600">Joseph <span class="text-gray-800">Samwa</span></a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-blue-600 transition">Home</a>
+                <a href="#about" class="hover:text-blue-600 transition">About</a>
+                <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+                <a href="#services" class="hover:text-blue-600 transition">Services</a>
+                <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+                <a href="#testimonials" class="hover:text-blue-600 transition">Testimonials</a>
+               
             </div>
-                <div class="home-img">
-                    <img src="potfolio.jpg" alt="">
-                </div>
-    </section>
-    <section class="education" id="education">
-            <h2 class="heading">SKILLS</h2>
-                <div class="timeline-items">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">FRONT-END</div>
-                        <div class="timeline-content">
-                            <div class="lix">
-                                <li>JavaScript</li>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                                <li>React</li>
-                                <li>Bootstrap</li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">BACK-END</div>
-                        <div class="timeline-content">
-                            <div class="lix">
-                                <li>Python</li>
-                                <li>Node.js</li>
-                                <li>Django</li>
-                                <li>Express.js</li>
-                            </div>  
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">GRAPHICS DESIGN</div>
-                        <div class="timeline-content">
-                            <div class="lix">
-                                <li>Desktop publishing</li>
-                                <li>Graphic designing</li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">SOFTWARE DEVELOPMENT</div>
-                        <div class="timeline-content">
-                            <div class="lix">
-                                <li>java for backend</li>
-                                <li>xml for frontend</li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">SOCIAL SKILLS</div>
-                        <div class="timeline-content">
-                            <h3><strong>Effective Communication:</strong><br> I am able to clearly articulate my thoughts and ideas, both verbally and in writing. I also practice active listening to ensure I understand others’ perspectives.</h3>
-                            <h3><strong>Teamwork:</strong><br> I enjoy working as part of a team and believe in the power of collaboration. I contribute positively to group dynamics and support my teammates to achieve common goals.
-                            </h3>
-                            <h3><strong>Adaptability:</strong><br> I am flexible and open to change, which helps me navigate different social situations and work environments. I can adjust my communication style to suit different audiences and contexts.
-                            </h3>
-                            <h3><strong>Leadership:</strong><br> I have experience leading teams and projects, where I motivate and guide others towards achieving our objectives. I take responsibility for my actions and decisions, and I am always willing to step up when needed.</h3>
-                            <h3><strong>Problem-Solving:</strong><br> I approach problems with a positive attitude and a creative mindset. I enjoy finding effective solutions and am always ready to tackle challenges head-on.
-                            </h3>
-                            <h3><strong>Interpersonal Skills:</strong><br> I build and maintain positive relationships with colleagues, clients, and stakeholders. Networking and connecting with others come naturally to me, and I value the importance of strong professional relationships.</h3>
-                            <h3><strong>Overally, my social skills enable me to work well with others, build meaningful connections, and contribute positively to any team or project."
+            <button id="mobile-menu-button" class="md:hidden text-gray-500 hover:text-gray-800 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
 
-                            </strong></h3>
-                        </div>
-                    </div>
-                </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-800 bg-opacity-95 z-50 mobile-menu no-print">
+        <div class="flex flex-col h-full justify-center items-center">
+            <a href="#home" class="text-white text-2xl py-4">Home</a>
+            <a href="#about" class="text-white text-2xl py-4">About</a>
+            <a href="#skills" class="text-white text-2xl py-4">Skills</a>
+            <a href="#services" class="text-white text-2xl py-4">Services</a>
+            <a href="#projects" class="text-white text-2xl py-4">Projects</a>
+            <a href="#testimonials" class="text-white text-2xl py-4">Testimonials</a>
+            
+        </div>
+        <button id="close-mobile-menu" class="absolute top-4 right-4 text-white">
+            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
+
+    <header id="home" class="text-center py-32 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+        <img src="potfolio.jpg" alt="Joseph Samwa" class="w-40 h-40 rounded-full mx-auto shadow-lg hover:scale-105 transition duration-300 animate-scale-in">
+        <h1 class="text-4xl font-extrabold mt-4 animate-fade-in">Joseph Samwa</h1>
+        <h2 class="text-2xl font-bold mt-2 animate-fade-in" style="animation-delay: 0.3s;">Full-Stack Developer & Designer</h2>
+        <p class="mt-4 text-lg animate-fade-in" style="animation-delay: 0.6s;">Specializing in Web, Software, Mobile Development & Graphic Design</p>
+        <div class="mt-6 flex justify-center space-x-4">
+            <a href="https://wa.me/254113607660?text=Hello%2C%20I%20am%20interested%20in%20your%20services." class="bg-white text-blue-600 px-6 py-2 rounded-lg shadow-md hover:bg-blue-100 transition animate-slide-in-left" style="animation-delay: 0.9s;">Hire Me</a>
+            <!--<a href="#" class="bg-transparent border-2 border-white text-white px-6 py-2 rounded-lg hover:bg-white hover:text-blue-600 transition animate-slide-in-right" style="animation-delay: 0.9s;">Download CV</a>-->
+        </div>
+    </header>
+
+    <section id="about" class="container mx-auto px-4 py-16">
+        <h3 class="text-3xl font-bold text-center mb-8 hidden-element">About Me</h3>
+        <div class="max-w-3xl mx-auto text-center">
+            <p class="text-lg mb-4 hidden-element">I'm a passionate Full-Stack Developer and Designer based in Nairobi, Kenya. With expertise in both front-end and back-end technologies, I create robust, scalable, and user-friendly digital solutions.</p>
+            <p class="text-lg hidden-element">My goal is to blend creativity with technical skills to deliver exceptional web and mobile experiences that drive business growth and user engagement.</p>
+        </div>
     </section>
-    <section class="services" id="services">
-            <h2 class="heading">SERVICES</h2>
-            <div class="services-container">
-                <div class="service-box">
-                    <div class="service-info">
-                        <h4>WEBSITE DEVELOPMENT:</h4>
-                    <h3 class="content">“I specialize in creating robust, scalable, and user-friendly websites. <br>From front-end interfaces to back-end systems, I ensure that every aspect of your website is optimized for performance and security. <br>My goal is to deliver seamless and engaging online experiences that meet your business needs.”</h3>
-                    </div>
+
+    <section id="skills" class="bg-gray-200 py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-8 hidden-element">Skills</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md hidden-element">
+                    <h4 class="font-bold text-xl mb-4">Front-End</h4>
+                    <ul class="list-disc list-inside">
+                        <li>JavaScript</li>
+                        <li>React</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Bootstrap & Tailwind</li>
+                    </ul>
                 </div>
-                <div class="service-box">
-                    <div class="service-info">
-                        <h4>SOFTWARE DEVELOPMENT:</h4>
-                        <h3> “I provide comprehensive software development services, from concept to deployment. Whether you need custom software solutions, mobile applications, or enterprise systems, I deliver high-quality, reliable software tailored to your specific requirements. My focus is on creating efficient and scalable solutions that drive your business forward.”</h3>
-                    </div>
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md hidden-element">
+                    <h4 class="font-bold text-xl mb-4">Back-End</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                    </ul>
                 </div>
-                <div class="service-box">
-                    <div class="service-info">
-                        <h4>GRAPHIC DESIGNING</h4>
-                     <h3>“I offer professional graphic design services to help you communicate your message effectively. Whether it’s logos, brochures, or digital graphics, I create visually compelling designs that resonate with your target audience. My designs are crafted to enhance your brand’s visual appeal and leave a lasting impression.”</h3>
-                    </div>
-                    <div class="lix">
-                        
-                    </div>
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md hidden-element">
+                    <h4 class="font-bold text-xl mb-4">Mobile Development</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Java for Android</li>
+                        <li>Kotlin for Android</li>
+                        <li>React Native</li>
+                        <li>Swift for iOS</li>
+                        <li>Flutter</li>
+                        <li>Xamarin</li>
+                        <li>Objective-C</li>
+                        <li>SQLite for mobile databases</li>
+                        <li>Firebase for backend services</li>
+                    </ul>
                 </div>
-                <div class="service-box">
-                    <div class="service-info">
-                        <h4>WEBSITE DESIGN</h4>
-                     <h3>“I craft visually stunning and intuitive web designs that captivate your audience. By combining creativity with the latest design trends, I create websites that are not only aesthetically pleasing but also highly functional. My designs are tailored to reflect your brand identity and enhance user engagement.”</h3>
-                    </div>
+                
+                <div class="skill-card bg-white p-6 rounded-lg shadow-md hidden-element">
+                    <h4 class="font-bold text-xl mb-4">Design</h4>
+                    <ul class="list-disc list-inside">
+                        <li>Graphic Design</li>
+                        <li>UI/UX Design</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>Figma</li>
+                    </ul>
                 </div>
-                <div class="service-box">
-                    <div class="service-info">
-                        <h4>WEB DEVELOPMENT COURSE</h4>
-                        <h3>“I offer comprehensive web development courses designed to equip you with the skills needed to build modern, responsive websites. My courses cover everything from basic HTML and CSS to advanced JavaScript and backend development. Whether you’re a beginner or looking to enhance your skills, my courses provide hands-on learning experiences to help you succeed in the web development field.”</h3>
-                    </div>
-            </div>
             </div>
         </div>
-                    <div id="overlay"></div>
-                        <div id="DevForm">
-        <span class="close-btn" id="closeDevForm">X</span>
-        <form name="DevForm" id="contactForm">
-            <div id="alert"></div>
-            <label for="Name">Name:</label>
-            <input type="text" id="name" name="DevName" required placeholder="Name...">
-            <label for="DevEmail">Email:</label>
-            <input type="email" id="email" name="DevEmail" required placeholder="Email...">
-            <label for="DevPhone">Phone:</label>
-            <input type="tel" id="phone" name="DevPhone" required placeholder="Phone number...">
-            <label for="Message">Message:</label>
-            <textarea name="AIM" id="selections" rows="4" cols="20" placeholder="Enter your message..."></textarea>
-                        <div class="center">
-                <div class="outer button">
-            <button type="submit">Send</button>
+    </section>
+
+    <section id="services" class="container mx-auto px-4 py-16">
+        <h3 class="text-3xl font-bold text-center mb-8 hidden-element">Services</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-box bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="globe" class="w-8 h-8 text-blue-600 mr-3"></i>
+                    <h4 class="font-bold text-xl">Web Development</h4>
+                </div>
+                <p>Creating robust, scalable, and user-friendly websites optimized for performance and security.</p>
+            </div>
+            <div class="service-box bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="code" class="w-8 h-8 text-blue-600 mr-3"></i>
+                    <h4 class="font-bold text-xl">Software Development</h4>
+                </div>
+                <p>Developing custom software solutions, mobile applications, and enterprise systems tailored to your needs.</p>
+            </div>
+            <div class="service-box bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="palette" class="w-8 h-8 text-blue-600 mr-3"></i>
+                    <h4 class="font-bold text-xl">Graphic Design</h4>
+                </div>
+                <p>Crafting visually compelling designs for logos, brochures, and digital graphics to enhance your brand.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="bg-gray-200 py-16">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-8 hidden-element">Projects</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md hidden-element">
+                    <img src="market.png" alt="E-commerce Platform" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">E-commerce Platform</h4>
+                        <p class="text-gray-700">A full-stack e-commerce solution built with React and Django, featuring secure payment integration, user authentication, and a seamless shopping experience.</p>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md hidden-element">
+                    <img src="loans-savings.png" alt="Loans & Savings Platform" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Loans & Savings Platform</h4>
+                        <p class="text-gray-700">A digital financial platform enabling users to apply for loans, manage savings, and track transactions with an intuitive and secure interface.</p>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md hidden-element">
+                    <img src="county.png" alt="Wealth Declaration System" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Wealth Declaration System</h4>
+                        <p class="text-gray-700">A transparent and secure system for public officials to declare assets and liabilities, ensuring compliance with regulatory standards.</p>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md hidden-element">
+                    <img src="cbo.png" alt="CBO Website" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">CBO Website</h4>
+                        <p class="text-gray-700">A community-based organization (CBO) website designed to enhance outreach, engagement, and resource management for social impact initiatives.</p>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md hidden-element">
+                    <img src="Church.png" alt="Church Youth Portal" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Church Youth Portal</h4>
+                        <p class="text-gray-700">A dynamic online platform for church youth groups to connect, access resources, and participate in events, fostering spiritual and social growth.</p>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md hidden-element">
+                    <img src="online-school.png" alt="Online Learning Platform" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Online Learning Platform</h4>
+                        <p class="text-gray-700">A feature-rich e-learning system providing interactive courses, assessments, and certification for students and professionals.</p>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-lg overflow-hidden shadow-md hidden-element">
+                    <img src="travel.png" alt="Travel Consultancy Website" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-xl mb-2">Travel Consultancy Website</h4>
+                        <p class="text-gray-700">A comprehensive travel advisory platform offering personalized trip planning, destination guides, and booking assistance for travelers.</p>
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </section>
+    <section id="testimonials" class="container mx-auto px-4 py-16">
+        <h3 class="text-3xl font-bold text-center mb-8 hidden-element">Client Testimonials</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <img src="istockphoto-1483487030-1024x1024.jpg" alt="John Doe" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold text-lg">John Doe</h4>
+                        <div class="flex text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700">"Joseph delivered an outstanding website for our business. His attention to detail and creative approach exceeded our expectations. Highly recommended!"</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <img src="istockphoto-1483487030-1024x1024.jpg" alt="Jane Smith" class="w-16 h-16 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold text-lg">Jane Smith</h4>
+                        <div class="flex text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star-half'></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-700">"Working with Joseph was a pleasure. He developed a user-friendly mobile app that has significantly improved our customer engagement. His technical skills and professionalism are top-notch."</p>
+            </div>
+        </div>
     </section>
     
-    <section class="testimonials" id="testimonials">
-            <div class="testimonials-box">
-                <h2 class="heading">REFEREES</h2>
-                <div class="wrapper">
-                    <div class="testimonial-item">
-                        <img src="istockphoto-1483487030-1024x1024.jpg" alt="Samwa">
-                        <h2>Eliud Fidel</h2>
-                        <div class="rating">
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                        </div>
-                        <p>"BEST SOFTWARE DEVELOPMENT & PYTHON "</p>
-                        <div class="center">
-                            <div class="outer button">
-  <a href="https://wa.me/254792469173">
-<button>CONTACT</button>
-</a>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <img src="istockphoto-1483487030-1024x1024.jpg" alt="Rhino">
-                        <h2>Byron Felix</h2>
-                        <div class="rating">
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                        </div>
-                        <p>"Expert in Graphics Design"</p>
-                        <div class="center">
-                            <div class="outer button">
-                                <a href="https://wa.me/254706944506"><button>CONTACT</button></a>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <img src="istockphoto-1483487030-1024x1024.jpg" alt="Master">
-                        <h2>JOSE NARIEN</h2>
-                        <div class="rating">
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                            <i class='bx bxs-star' id="star"></i>
-                        </div>
-                        <p>"Expert In Python Automotion Projects"</p>
-                        <div class="center">
-                            <div class="outer button">
-                                <a href="https://wa.me/254742451048"><button>CONTACT</button></a>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
     
-    <section class="contact" id="contact">
-            <h2 class="heading">CONTACT <span>ME</span></h2>
-            <div class="center">
-                <div class="outer button">
-                    <a href="https://wa.me/254113607660"><button>WHATSAPP</button></a>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-           <!-- <div class="center">
-                    <div class="outer button">
-                        <a href="https://whatsapp.com/channel/"><button>WHATSAPP CHANNEL</button></a>
-                        <span></span>
-                        <span></span>
+    <section id="peers" class="container mx-auto px-4 py-16">
+        <h3 class="text-3xl font-bold text-center mb-8 hidden-element">PEERS</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <img src="istockphoto-1483487030-1024x1024.jpg" alt="Eliud Fidel" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold">Eliud Fidel</h4>
+                        <div class="flex text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
                     </div>
                 </div>
-            <div class="center">
-                <div class="outer button">
-                    <a href="https://www.tiktok.com/@JosephSamwa254"><button>TIKTOK</button></a>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>-->
-            <div class="center">
-                <div class="outer button">
-                    <a href="https://www.facebook.com/profile.php?id=100089103910464"><button>FACEBOOK</button></a>
-                    <span></span>
-                    <span></span>
-                </div>
+                <p>"Best in software development & Python"</p>
             </div>
-            <div class="center">
-                <div class="outer button">
-                    <a href="mailto:samtech.websites@gmail.com"><button>EMAIL</button></a>
-                    <span></span>
-                    <span></span>
+            <div class="bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <img src="istockphoto-1483487030-1024x1024.jpg" alt="Byron Felix" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold">Byron Felix</h4>
+                        <div class="flex text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                    </div>
                 </div>
+                <p>"Expert in Graphics Design"</p>
             </div>
-            <div class="center">
-                <div class="outer button">
-                    <a href="https://t.me/josephsamwa"><button>TELEGRAM </button></a>
-                    <span></span>
-                    <span></span>
+            <div class="bg-white p-6 rounded-lg shadow-md hidden-element">
+                <div class="flex items-center mb-4">
+                    <img src="istockphoto-1483487030-1024x1024.jpg" alt="Jose Narien" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold">Jose Narien</h4>
+                        <div class="flex text-yellow-400">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                        </div>
+                    </div>
                 </div>
+                <p>"Expert in Python Automation Projects"</p>
             </div>
-            <div class="center">
-                <div class="outer button">
-                    <a><button id="ptfl">Send a Direct Message</button></a>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+        </div>
     </section>
-    
-    <footer class="footer">
-            <div class="social">
-                <a href="https://wa.me/254113607660"><i class='bx bxl-whatsapp' ></i></a>
-                <a href="https://t.me/josephsamwa"><i class='bx bxl-telegram' ></i></a>
-                <!--<a href="https://www.instagram.com/JosephSamwa2"><i class='bx bxl-instagram-alt' ></i></a>-->
-                <a href="https://www.facebook.com/profile.php?id=100089103910464"><i class='bx bxl-facebook' ></i></a>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="w-full md:w-1/3 text-center md:text-left mb-4 md:mb-0">
+                    <h4 class="text-2xl font-bold">Joseph Samwa</h4>
+                    <p class="mt-2">Full-Stack Developer & Designer</p>
+                </div>
+                <div class="w-full md:w-1/3 text-center mb-4 md:mb-0">
+                    <h5 class="text-xl font-semibold mb-2">Quick Links</h5>
+                    <ul>
+                        <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+                        <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/3 text-center md:text-right">
+                    <h5 class="text-xl font-semibold mb-2">Connect</h5>
+                    <div class="flex justify-center md:justify-end space-x-4">
+                <a href="https://wa.me/254113607660?text=Hello%2C%20I%20am%20interested%20in%20your%20services."class="hover:text-green-400 transition"><i class='bx bxl-whatsapp text-2xl'></i></a>
+                        <a href="https://t.me/josephsamwa" class="hover:text-blue-400 transition"><i class='bx bxl-telegram text-2xl'></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100089103910464" class="hover:text-blue-600 transition"><i class='bx bxl-facebook text-2xl'></i></a>
+                    </div>
+                </div>
             </div>
-            <ul class="list">
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-                <li>
-                    <a href="#">Testimonials</a>
-                </li>
-            </ul>
-            <p class="copyright">
-                it`s JosephSamwa
-            </p>
+            <div class="mt-8 text-center">
+                <p>&copy; 2025 Joseph Samwa. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
-                <script>
-        const adminBtn = document.getElementById('ptfl');
-        const DevForm = document.getElementById('DevForm');
-        const closeDevForm = document.getElementById('closeDevForm');
-        const overlay = document.getElementById('overlay');
 
-        adminBtn.addEventListener('click', () => {
-            DevForm.style.display = 'block';
-            overlay.style.display = 'block';
+    <!-- Floating buttons for call and WhatsApp -->
+    <div class="floating-buttons no-print">
+        <a href="tel:+254113607660" class="floating-button bg-blue-600 text-white">
+            <i class='bx bx-phone text-2xl'></i>
+        </a>
+        <a href="https://wa.me/254113607660?text=Hello%2C%20I%20am%20interested%20in%20your%20services."class="floating-button bg-green-500 text-white">
+
+            <i class='bx bxl-whatsapp text-2xl'></i>
+        </a>
+    </div>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
 
-        closeDevForm.addEventListener('click', () => {
-            DevForm.style.display = 'none';
-            overlay.style.display = 'none';
+        // Add scroll animation for elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible-element');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.hidden-element').forEach((el) => observer.observe(el));
+
+        // Function to generate and download PDF
+        function generatePDF() {
+            const element = document.body;
+            const options = {
+                margin: 10,
+                filename: 'joseph_samwa_portfolio.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Remove no-print elements temporarily
+            const noPrintElements = document.querySelectorAll('.no-print');
+            noPrintElements.forEach(el => el.style.display = 'none');
+
+            html2pdf().set(options).from(element).save().then(() => {
+                // Restore no-print elements
+                noPrintElements.forEach(el => el.style.display = '');
+            });
+        }
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
         });
 
-        overlay.addEventListener('click', () => {
-            DevForm.style.display = 'none';
-            overlay.style.display = 'none';
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+
+            lucide.createIcons();
         });
     </script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCYRmPpm4xdUiae5NJFzWhHXEMBDjii8vQ",
-    authDomain: "samtech-f5943.firebaseapp.com",
-    projectId: "samtech-f5943",
-    storageBucket: "samtech-f5943.appspot.com",
-    messagingSenderId: "647531302631",
-    appId: "1:647531302631:web:7a279a9dd7c94e5af41c42",
-    measurementId: "G-R38C1HY5NE"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-        <script src="potfolio.js"></script>
-    </body>
-    </html>
+</body>
+</html>
